@@ -743,6 +743,7 @@ module.exports.Encoding = nativeBinding.Encoding
 module.exports.JsEncoding = nativeBinding.JsEncoding
 module.exports.Model = nativeBinding.Model
 module.exports.Normalizer = nativeBinding.Normalizer
+module.exports.PipelineTokenizer = nativeBinding.PipelineTokenizer
 module.exports.PreTokenizer = nativeBinding.PreTokenizer
 module.exports.Processor = nativeBinding.Processor
 module.exports.Tokenizer = nativeBinding.Tokenizer

@@ -53,6 +53,21 @@ export declare class Normalizer {
   normalizeString(sequence: string): string
 }
 
+export declare class PipelineTokenizer {
+  static fromFile(path: string): PipelineTokenizer
+  /**
+   * `Uint32Array`, not `Vec<u32>`: a JS `Array` costs one napi value per token, which
+   * on token-dense input is 13× the encode itself (gpt2 chinese 31 vs 616 MB/s).
+   */
+  encode(text: string, addSpecialTokens?: boolean | undefined | null): Uint32Array
+  /**
+   * Drops the two remaining per-call costs of `encode`: the JS string → UTF-8 copy
+   * (as fast as the tokenizer itself, so it halves throughput) and the fresh
+   * ArrayBuffer (388 ns of a 789 ns call). Returns how many ids were written.
+   */
+  encodeBytesInto(text: Uint8Array, out: Uint32Array, addSpecialTokens?: boolean | undefined | null): number
+}
+
 /** PreTokenizers */
 export declare class PreTokenizer {
   preTokenizeString(sequence: string): [string, [number, number]][]

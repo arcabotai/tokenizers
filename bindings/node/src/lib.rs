@@ -7,6 +7,7 @@ pub mod decoders;
 pub mod encoding;
 pub mod models;
 pub mod normalizers;
+pub mod pipeline;
 pub mod pre_tokenizers;
 pub mod processors;
 pub mod tasks;
